@@ -116,23 +116,6 @@ def show_marks():
             print(studentlist[i].get_id()," ",studentlist[i].get_name()," ",courselist[course_id].get_name(),"mark: ",studentlist[i].get_mark()[x])
         except:
             print(studentlist[i].get_id()," ",studentlist[i].get_name()," ",courselist[course_id].get_name(),"mark: N/A")
-
-#Sorting funtions
-def partition_quicksort(array, low, high):
-  pivot = array[high].get_GPA()
-  i = low - 1
-  for j in range(low, high):
-    if array[j].get_GPA() >= pivot:
-      i = i + 1
-      (array[i], array[j]) = (array[j], array[i])
-  (array[i + 1], array[high]) = (array[high], array[i + 1])
-  return i + 1
-
-def quickSort(array, low, high):
-  if low < high:
-    pi = partition_quicksort(array, low, high)
-    quickSort(array, low, pi - 1)
-    quickSort(array, pi + 1, high)
     
 #Function to calculate and display students'GPA
 def show_GPA():
@@ -160,7 +143,7 @@ def show_GPA():
             credits=1 #if no mark is inputted then credits must not be 0 or else there will be an error divided by 0
         GPA = GPA/credits
         Student.set_GPA(GPA) #Set student's GPA in class Student
-    quickSort(npstudentlist,0,len(npstudentlist)-1) #Sort student list
+    npstudentlist=sorted(npstudentlist,key=lambda x: x.get_GPA(), reverse=True) #Sort student list
     #display student list with GPA
     for Student in npstudentlist:
         print(f"{Student.get_id()} {Student.get_name()} DoB: {Student.get_DoB()} GPA: {Student.get_GPA()}")

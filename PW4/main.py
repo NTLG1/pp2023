@@ -3,23 +3,6 @@ import output as op
 studentlist=[]
 courselist={}
 
-#Sorting funtions
-def partition_quicksort(array, low, high):
-  pivot = array[high].get_GPA()
-  i = low - 1
-  for j in range(low, high):
-    if array[j].get_GPA() >= pivot:
-      i = i + 1
-      (array[i], array[j]) = (array[j], array[i])
-  (array[i + 1], array[high]) = (array[high], array[i + 1])
-  return i + 1
-
-def quickSort(array, low, high):
-  if low < high:
-    pi = partition_quicksort(array, low, high)
-    quickSort(array, low, pi - 1)
-    quickSort(array, pi + 1, high)
-
 ip.input_students()
 ip.input_courses()
 #Menu

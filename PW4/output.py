@@ -56,7 +56,7 @@ def show_GPA():
             credits=1 #if no mark is inputted then credits must not be 0 or else there will be an error divided by 0
         GPA = GPA/credits
         Student.set_GPA(GPA) #Set student's GPA in class Student
-    m.quickSort(npstudentlist,0,len(npstudentlist)-1) #Sort student list
+    npstudentlist=sorted(npstudentlist,key=lambda x: x.get_GPA(), reverse=True) #Sort student list
     #display student list with GPA
     for Student in npstudentlist:
         print(f"{Student.get_id()} {Student.get_name()} DoB: {Student.get_DoB()} GPA: {Student.get_GPA()}")
